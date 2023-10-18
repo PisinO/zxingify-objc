@@ -62,6 +62,10 @@ static NSString *MACRO_TRAILER = nil;
   return 231;
 }
 
++ (unichar)fnc1 {
+    return 232;
+}
+
 + (unichar)upperShift {
   return 235;
 }
@@ -147,6 +151,8 @@ static NSString *MACRO_TRAILER = nil;
   ZXDataMatrixEncoderContext *context = [[ZXDataMatrixEncoderContext alloc] initWithMessage:msg];
   context.symbolShape = shape;
   [context setSizeConstraints:minSize maxSize:maxSize];
+
+  [context writeCodeword: [self fnc1]];
 
   if ([msg hasPrefix:MACRO_05_HEADER] && [msg hasSuffix:MACRO_TRAILER]) {
     [context writeCodeword:[self macro05]];
